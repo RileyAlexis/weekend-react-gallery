@@ -4,7 +4,7 @@ import axios from 'axios';
 
 
 //Material UI
-import {Container, Box , ImageList, ImageListItem} from '@mui/material';
+import {Container, Box , ImageList, ImageListItem, ImageListItemBar} from '@mui/material';
 
 function App() {
 
@@ -37,17 +37,27 @@ function App() {
           <h2>Gallery</h2>
           </div>
         </Box>
-          <Box 
+          <Box
             sx={{
-              backgroundColor: 'primary.light',
+              backgroundColor: 'primary.light', 
             }}>
-              <ImageList sx={{width: 500, height: 450}} cols={4} rowHeight={165}>
+              <ImageList 
+                variant='standard'
+                sx={{width: 1, height: 0.9}} cols={4} gap={8}>
                 {imageList?.map((item) => (
                     <ImageListItem key={item.id}>
                       <img src={`../${item.path}w=165&h=165&fit=crop&auto=format`}
                       srcSet={`../${item.path}?w=165&h=165&fit=crop&auto=format&dpr=2 2x`}
-                      alt={item.description}
-                      loading="lazy" />
+                      loading="lazy" 
+                      component='Box'/>
+                        <ImageListItemBar 
+                        title={item.description}
+                        style={{ transition: '0.7s' }}
+                        sx={{ 
+                          '&:hover': {
+                            height:1/2}
+                        }}
+                        />
                       </ImageListItem>
                 ))}
               </ImageList>
