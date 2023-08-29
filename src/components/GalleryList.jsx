@@ -10,13 +10,14 @@ function GalleryList({ fetchImages, imageList}) {
           backgroundColor: 'primary.light', 
         }}>
           <ImageList 
-            variant='standard'
+            variant='masonry'
             sx={{
-                width: 1, 
+                width: 0.96, 
                 height: 0.9,
+                ml: 2
                 }} 
             
-            cols={4} gap={8}>
+            cols={3} gap={8}>
             {imageList?.map((item) => (
                 <GalleryItem fetchImages={fetchImages} key={item.id} item={item} />
             ))}

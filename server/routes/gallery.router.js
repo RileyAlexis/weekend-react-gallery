@@ -17,7 +17,8 @@ router.put('/like/:id', (req, res) => {
         res.sendStatus(200);
 
     }).catch((error) => {
-        console.error(`Error making query ${queryString}`, error);  
+        console.error(`Error making query ${queryString}`, error);
+        res.sendStatus(500);  
     })
 
 }); // END PUT Route
@@ -37,6 +38,20 @@ router.get('/', (req, res) => {
     })
 })
 
+router.delete('/:id', (req, res) => {
+    let queryString = `DELETE FROM "imagelist"
+                WHERE "id" = $1`;
+    let id = req.params.id;
+        pool.query(queryString, [id])
+        .then((response) => {
+            res.sendStatus(200);
+        }).catch((error) => {
+            console.error(`Error making query ${queryString}`, error);
+            res.sendStatus(500);
+        })
 
+
+
+})
 
 module.exports = router;
