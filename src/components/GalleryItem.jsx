@@ -6,8 +6,6 @@ import axios from 'axios';
 function GalleryItem({fetchImages, item}) {
 
   const handleClick = () => {
-    console.log(item.id);
-
     axios.put(`gallery/like/${item.id}`)
     .then((response) => {
       fetchImages();
