@@ -49,9 +49,6 @@ router.delete('/:id', (req, res) => {
             console.error(`Error making query ${queryString}`, error);
             res.sendStatus(500);
         })
-
-
-
 })
 
 module.exports = router;

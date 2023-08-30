@@ -42,11 +42,6 @@ function App() {
           </div>
         </Box>
         <GalleryList fetchImages={fetchImages} imageList={imageList}/>
-
-
-
-
-
       </Container>
     );
 }

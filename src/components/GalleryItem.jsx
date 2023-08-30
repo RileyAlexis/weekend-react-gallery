@@ -26,61 +26,61 @@ function GalleryItem({fetchImages, item}) {
       icon: "warning",
       buttons: true,
       dangerMode: true
-      })
+    })
       .then((value) => {
-          if (value) {
+        if (value) {
           axios.delete(`/gallery/${item.id}`)
-          .then((response) => {
+            .then((response) => {
               fetchImages();
-          }).catch((error) => {
+            }).catch((error) => {
               console.log(error);
-          })
+            })
+        }
       }
-    }
       )
   }
 
   return (
-        <ImageListItem key={item.id}
-          sx={{
-            border: 1,
-            boxShadow: 1
-          }}>
+    <ImageListItem key={item.id}
+      sx={{
+        border: 1,
+        boxShadow: 1
+      }}>
 
-        <img src={`../${item.path}w=165&h=165&fit=crop&auto=format`}
+      <img src={`../${item.path}w=165&h=165&fit=crop&auto=format`}
         srcSet={`../${item.path}?w=165&h=165&fit=crop&auto=format&dpr=2 2x`}
-        loading="lazy" 
-        component='Box'/>
-          <ImageListItemBar
-          
-          title={item.description}
-          subtitle={`${item.likes} like this`}
-          position="bottom"
-          actionPosition='right'
-          actionIcon={
-            <ButtonGroup variant='contained'>
-            <RecommendIcon 
-            sx={{
-              cursor: 'pointer'
-            }}
-            aria-label={'Like'} 
-            color="primary"
-            onClick={handleClick}/>
-            <DeleteIcon 
+        loading="lazy"
+        component='Box' />
+      <ImageListItemBar
+
+        title={item.description}
+        subtitle={`${item.likes} like this`}
+        position="bottom"
+        actionPosition='right'
+        actionIcon={
+          <ButtonGroup variant='contained'>
+            <RecommendIcon
               sx={{
                 cursor: 'pointer'
               }}
-              color="warning" 
+              aria-label={'Like'}
+              color="primary"
+              onClick={handleClick} />
+            <DeleteIcon
+              sx={{
+                cursor: 'pointer'
+              }}
+              color="warning"
               onClick={deleteItem}
-              />
-            </ButtonGroup>
-          }
-          />
+            />
+          </ButtonGroup>
+        }
+      />
 
 
-        </ImageListItem>
+    </ImageListItem>
 
-    )
+  )
 }
 
 export default GalleryItem;

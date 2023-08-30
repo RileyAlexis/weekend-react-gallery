@@ -1,3 +1,5 @@
+
+//No longer used - all items are in database
 const galleryItems = [
     {
         id: 1,
